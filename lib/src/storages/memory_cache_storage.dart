@@ -3,6 +3,10 @@ import 'package:stx_cache_manager/src/core/cache_storage.dart';
 class MemoryCacheStorage<T> implements CacheStorage<T> {
   final _map = <String, T>{};
 
+  bool containsKey(String key) {
+    return _map.containsKey(key);
+  }
+
   @override
   Future<void> delete(String valueKey) async {
     _map.remove(valueKey);
