@@ -4,7 +4,9 @@ import 'package:stx_cache_manager/stx_cache_manager.dart';
 import 'screens/home_screen.dart';
 
 void main() async {
-  await HiveCacheStorage.intiStorage();
+  await HiveCacheStorage.initHiveBoxes(
+    boxNames: ['NewsBox'],
+  );
 
   runApp(const MyApp());
 }

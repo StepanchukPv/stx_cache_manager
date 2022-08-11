@@ -48,10 +48,6 @@ class HomeScreen extends StatelessWidget {
             );
           }
 
-          if (snapshot.data == null) {
-            return const Text('a');
-          }
-
           return ListView.separated(
             itemCount: snapshot.data!.items.length,
             separatorBuilder: (_, __) {

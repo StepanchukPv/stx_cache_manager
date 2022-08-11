@@ -2,15 +2,22 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:stx_cache_manager/src/core/cache_storage.dart';
 
 class HiveCacheStorage implements CacheStorage<String> {
-  HiveCacheStorage() : _box = Hive.box<String>(_boxName);
+  HiveCacheStorage({
+    required this.boxName,
+  }) : _box = Hive.box<String>(boxName);
 
   final Box<String> _box;
 
-  static const String _boxName = 'CacheBox';
+  final String boxName;
 
-  static Future<void> intiStorage() async {
+  static Future<void> initHiveBoxes({
+    required List<String> boxNames,
+  }) async {
     await Hive.initFlutter();
-    await Hive.openBox<String>(_boxName);
+
+    for (int i = 0; i < boxNames.length; i++) {
+      await Hive.openBox<String>(boxNames[i]);
+    }
   }
 
   @override

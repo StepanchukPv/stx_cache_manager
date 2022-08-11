@@ -4,7 +4,7 @@ import 'package:example/modals/news_response_modal.dart';
 import 'package:stx_cache_manager/stx_cache_manager.dart';
 
 class NewsCacheManager {
-  final HiveCacheStorage _storage = HiveCacheStorage();
+  final HiveCacheStorage _storage = HiveCacheStorage(boxName: 'NewsBox');
   final String _accessKey = 'newsResponse';
 
   Future<NewsResponseModal?> read() async {
